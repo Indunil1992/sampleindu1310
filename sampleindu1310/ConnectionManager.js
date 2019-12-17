@@ -1,11 +1,11 @@
 module.exports = function() {
     this.dbConnections = [];
 
-    this.dbConnections["indunilIdentifier"] = {
-        host: process.env.EndPoint_rdsIndunilIdentifier,
-        port: process.env.Port_rdsIndunilIdentifier,
-        user: process.env.User_rdsIndunilIdentifier,
-        password: process.env.Password_rdsIndunilIdentifier,
+    this.dbConnections["indunilidentifier"] = {
+        host: "indunilidentifier.czndmdv7dw6d.us-east-1.rds.amazonaws.com",
+        port: "3306",
+        user: "indunil",
+        password: process.env.Password_rdsIndunilidentifier,
         database: "indunilDB"
     };
 };
