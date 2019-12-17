@@ -13,9 +13,10 @@ exports.handler = async (event) => {
             throw error;
         }
                     console.log(connection);
+    connection.destroy();
 
     });
 
-    connection.destroy();
+   // connection.destroy();
     return { "message": "Successfully executed with RDS" };
 };

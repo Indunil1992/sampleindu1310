@@ -23,7 +23,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "sampleindu1310/lambda.js",
-        "code": "let SL_AWS = require('slappforge-sdk-aws');\nlet connectionManager = require('./ConnectionManager');\nconst rds = new SL_AWS.RDS(connectionManager);\n\nexports.handler = async (event) => {\n\n    // You must always end/destroy the DB connection after it's used\n    rds.beginTransaction({\n        instanceIdentifier: 'indunilIdentifier'\n    }, function (error, connection) {\n        if (error) {\n            console.log(error);\n            throw error;\n        }\n                    console.log(connection);\n\n    });\n\n    connection.destroy();\n    return { \"message\": \"Successfully executed with RDS\" };\n};",
+        "code": "let SL_AWS = require('slappforge-sdk-aws');\nlet connectionManager = require('./ConnectionManager');\nconst rds = new SL_AWS.RDS(connectionManager);\n\nexports.handler = async (event) => {\n\n    // You must always end/destroy the DB connection after it's used\n    rds.beginTransaction({\n        instanceIdentifier: 'indunilIdentifier'\n    }, function (error, connection) {\n        if (error) {\n            console.log(error);\n            throw error;\n        }\n                    console.log(connection);\n    connection.destroy();\n\n    });\n\n   // connection.destroy();\n    return { \"message\": \"Successfully executed with RDS\" };\n};",
         "config": {
           "runtime": "nodejs10.x",
           "handler": "handler",
@@ -31,7 +31,16 @@
           "memory": 128,
           "layers": []
         },
-        "triggers": []
+        "triggers": [],
+        "testCases": {
+          "7fca544e-09fd-48ce-ad59-e3618cd41f66": {
+            "id": "7fca544e-09fd-48ce-ad59-e3618cd41f66",
+            "name": "Test event",
+            "functionId": "5b180b6b-62df-47b8-8b69-17f0e10b90cc",
+            "event": "{\"key1\": \"value1\", \"key2\": \"value2\", \"key3\": \"value3\"}",
+            "eventTemplate": "hello-world"
+          }
+        }
       },
       "20f771e3-4fd2-407c-a6dd-603c0a68893b": {
         "id": "20f771e3-4fd2-407c-a6dd-603c0a68893b",
@@ -165,7 +174,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1576560537188
+    "lastSave": 1576561087525
   },
   "VCS_STATE": {
     "provider": "GitHub",
